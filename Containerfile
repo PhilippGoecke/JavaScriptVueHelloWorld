@@ -15,6 +15,8 @@ RUN vue create hello-vue --default --no-git \
 
 WORKDIR /vue-app/hello-vue
 
+RUN npm install -g http-server
+
 RUN npm install
 
 #EXPOSE 8080
@@ -23,8 +25,12 @@ RUN npm install
 
 RUN npm run build
 
-FROM docker.io/nginx:stable-bookworm
+#FROM docker.io/nginx:stable-bookworm
 
-COPY --from=build /vue-app/hello-vue/dist /usr/share/nginx/html
+#COPY --from=build /vue-app/hello-vue/dist /usr/share/nginx/html
 
-EXPOSE 80
+#EXPOSE 80
+
+EXPOSE 8080
+
+CMD [ "http-server", "dist" ]
