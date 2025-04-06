@@ -17,6 +17,14 @@ WORKDIR /vue-app/hello-vue
 
 RUN npm install
 
-EXPOSE 8080
+#EXPOSE 8080
 
-CMD vue serve
+#CMD vue serve
+
+RUN npm run build
+
+FROM docker.io/nginx:stable-bookworm
+
+COPY --from=build /vue-app/hello-vue/dist /usr/share/nginx/html
+
+EXPOSE 80
