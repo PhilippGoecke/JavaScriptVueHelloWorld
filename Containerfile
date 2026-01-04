@@ -46,13 +46,13 @@ RUN set -eux; \
   mkdir -p src/router src/components; \
   cat > src/router/index.js <<'EOF'
 import { createRouter, createWebHistory } from 'vue-router'
-import Hello from '../components/Hello.vue'
+import HelloWorld from '../components/HelloWorld.vue'
 
 const routes = [
   {
     path: '/hello/:name?',
-    name: 'Hello',
-    component: Hello,
+    name: 'HelloWorld',
+    component: HelloWorld,
     props: route => ({ name: route.params.name ?? route.query.name ?? 'world' }),
   },
 ]
@@ -63,7 +63,7 @@ export default createRouter({
 })
 EOF
   \
-  && cat > src/components/Hello.vue <<'EOF'
+  && cat > src/components/HelloWorld.vue <<'EOF'
 <script setup>
 import { version as vueVersion } from 'vue'
 
