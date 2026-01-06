@@ -12,7 +12,7 @@ watchEffect(() => {
   console.log('name:', name.value)
 })
 
-watch(() => [route.query?.name, route.params?.name], ([q, p]) => {
+watch(() => [route.query?.name?, route.params?.name?], ([q, p]) => {
   console.log('query.name:', q, 'params.name:', p, 'computed name:', name.value)
 })
 </script>
