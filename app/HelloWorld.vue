@@ -4,7 +4,7 @@ import { computed, watchEffect, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const name = computed(() => route.query.name ?? route.params.name ?? 'World')
+const name = computed(() => route.query.name?.trim() || route.params.name?.trim() || 'World')
 
 watchEffect(() => {
   console.log('route.query:', route.query)
