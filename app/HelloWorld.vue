@@ -1,15 +1,16 @@
-<script>
+<script setup>
 import { version as vueVersion } from 'vue'
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 
-export default {
-  setup() {
-    const route = useRoute()
-    const name = computed(() => route.query.name ?? route.params.name ?? 'World')
-    return { name, vueVersion }
-  }
-}
+const route = useRoute()
+const name = computed(() => route.query.name ?? route.params.name ?? 'World')
+
+watchEffect(() => {
+  console.log('route.query:', route.query)
+  console.log('route.params:', route.params)
+  console.log('name:', name.value)
+})
 </script>
 
 <template>
