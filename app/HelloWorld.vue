@@ -1,10 +1,10 @@
 <script setup>
-import { version as vieVersion } from 'vue'
-import { defineProps } from 'vue'
+import { version as vueVersion } from 'vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
-defineProps {(
-  name: { type: String, default 'World' }
-)}
+const route = useRoute()
+const name = computed(() => route.query.name ?? route.params.name ?? 'World')
 </script>
 
 <template>
