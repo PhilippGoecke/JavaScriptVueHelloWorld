@@ -43,13 +43,7 @@ RUN vue create hello-vue --default --no-git
 
 WORKDIR /vue-app/hello-vue
 
-#RUN set -eux; \
-#RUN npm install --save vue-router@4; \
-#  mkdir -p src/router src/components;
-
 COPY app/HelloWorld.vue src/components/
-COPY app/main.js src/
-COPY app/App.vue src/
 
 RUN npm install -g http-server
 
