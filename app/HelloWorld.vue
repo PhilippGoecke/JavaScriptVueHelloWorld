@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const name = computed(() => route?.query?.name?.trim() || route?.params?.name?.trim() || 'World')
+const name = computed(() => route.query.name?.trim() || route.params.name?.trim() || 'World')
 </script>
 
 <template>
