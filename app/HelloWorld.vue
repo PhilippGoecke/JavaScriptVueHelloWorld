@@ -1,10 +1,8 @@
 <script setup>
 import { version as vueVersion } from 'vue'
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
 
-const route = useRoute()
-const name = computed(() => route.query.name?.trim() || route.params.name?.trim() || 'World')
+const params = new URLSearchParams(window.location.search)
+const name = params.get('name') || 'World'
 </script>
 
 <template>
